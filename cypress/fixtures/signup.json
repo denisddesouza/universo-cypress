@@ -1,0 +1,26 @@
+
+
+{
+  "success":{
+    "name": "Denis Souza",
+    "email": "denis.souza@samuraibs.com",
+    "password": "pwd123"
+  },
+  "email_dup":{
+    "name": "Cristiano Ronaldo", 
+    "email": "cristrianoRonaldo@samuraibs.com", 
+    "password": "pwd123", 
+    "is_provider": true 
+  },
+
+  "email_inv": {
+    "name": "Elizabeth Olsen", 
+    "email": "denis.souzasamuraibs.com", 
+    "password": "pwd123"
+  },
+  "short_password": {
+    "name": "Elizabeth Olsen", 
+    "email": "lizaolsen@souzasamuraibs.com", 
+    "password": null
+  }
+}

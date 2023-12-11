@@ -1,0 +1,16 @@
+{
+  "name": "samuraibs-tests",
+  "version": "1.0.0",
+  "description": "Projeto de testes de aceitação de ponta a ponta em Cypress",
+  "main": "index.js",
+  "author": "Denis Delgado de Souza",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "cypress": "^13.6.0",
+    "cypress-xpath": "^2.0.1",
+    "moment": "^2.29.4",
+    "pg": "^8.11.3",
+    "underscore": "^1.13.6"
+  }
+}
