@@ -3,12 +3,12 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
 
   env:{
-    apiServer: 'http://localhost:3333'
+    apiServer: 'https://samuraibs-api-qaddenis.fly.dev'
   },
-
+  defaultCommandTimeout: 30000,
   viewportHeight: 900,
   viewportWidth: 1440,
-  videoCompression: true,
+  videoCompression: false,
   video: true,
   e2e: {
     setupNodeEvents(on, config) {
@@ -16,10 +16,15 @@ module.exports = defineConfig({
          const { Pool } = require('pg')
 
          const pool = new Pool({
-            host: 'localhost',
-            user: 'postgres',
-            password: 'sined',
-            database: 'SamuraiBS-Dev',
+            // host: 'localhost',
+            // user: 'postgres',
+            // password: 'sined',
+            // database: 'SamuraiBS-Dev',
+            // port: 5432
+            host: 'bubble.db.elephantsql.com',
+            user: 'hxqomvqk',
+            password: 'BpYfgak0_YpGzBeyM7A0SpIfugkTpa1z',
+            database: 'hxqomvqk',
             port: 5432
          })
          
@@ -42,7 +47,7 @@ module.exports = defineConfig({
 
     },
     
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'https://samuraibs-web-qaddenis.fly.dev',
       testIsolation: true
       
   },

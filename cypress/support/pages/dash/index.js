@@ -9,30 +9,6 @@ class DashPage {
         cy.get(el.calendar)
             .should('be.visible')
     }
-
-    // selectDay(appointmentDate){
-
-    //     let today = new Date()
-    //     let lastDayOfMont = new Date(today.getFullYear(), today.getMonth() + 1, 0)
-
-    //     if (today.getDate() === lastDayOfMont.getDate()){
-    //         cy.log('ultimo dia do mes')
-    //         cy.get(el.nextMonthButton)
-    //         .should('be.visible')
-    //         .click()
-    //         cy.log('AQUI A DATA: ' + appointmentDate.getMonth())
-    //         cy.contains(el.monthYearName, 'Janeiro')
-    //     }else{
-    //         cy.log('não é o ultimo dia do mes')
-    //     }
-
-    //     cy.log(today.toString())
-    //     cy.log(lastDayOfMont.toString())
-
-    //     const target = new RegExp('^' + appointmentDate.getDate() + '$', 'g')
-    //     cy.contains(el.selectDay, target).click()
-    // }
-
     selectDay(appointmentDate) {
 
         let today = new Date()
