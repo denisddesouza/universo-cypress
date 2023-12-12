@@ -6,6 +6,7 @@ module.exports = defineConfig({
     apiServer: 'https://samuraibs-api-qaddenis.fly.dev'
   },
   defaultCommandTimeout: 30000,
+  projectId: "7an5ba",
   viewportHeight: 900,
   viewportWidth: 1440,
   videoCompression: false,
