@@ -1,0 +1,48 @@
+name: Cypress Tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
+    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    # Also see warning here https://github.com/cypress-io/github-action#parallel
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1] # Uses 2 parallel instances
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Ping my API
+      
+        # You may pin to the exact commit or the version.
+        # uses: Leocardoso94/is-my-site-up@dd9b46848d4e3e871dfb20cf98de8fa6caf35324
+        uses: Leocardoso94/is-my-site-up@v1.2
+        with:
+          # Site's url
+          site: https://samuraibs-api-qaddenis.fly.dev
+                 
+      - name: 'UI Tests - Chrome'
+        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v6
+        with:
+          # Starts web server for E2E tests - replace with your own server invocation
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
+          install-command: yarn install
+          wait-on: 'https://samuraibs-web-qaddenis.fly.dev' # Waits for above
+          browser: chrome
+          group: 'UI - Chrome'
+          
+          # Records to Cypress Cloud 
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          record: true
+          parallel: true # Runs test in parallel using settings above
+          spec: cypress/e2e/*
+        env:
+          TZ: America/Sao_Paulo
+          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
+          # in GitHub repo → Settings → Secrets → Actions
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
